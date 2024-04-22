@@ -28,20 +28,9 @@ void Game::fillField() {
 }
 
 void Game::playGame(SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot){
-    int mode = 0;
-    int chosenBot = 0;
     std::cout << "Welcome to Deep Miner!" << std::endl;
-    std::cout << "In which mode would you like to play? Player vs. Computer (1) or Computer vs. Computer (2)" << std::endl;
-    std::cin >> mode;
 
-    if (mode == 1){
-        std::cout << "You chose the mode: Player vs. Computer" << std::endl;
-        std::cout << "Which bot would you like to play? Sort ascending (1), sort descending (2), dig deep (3)" << std::endl;
-        std::cin >> chosenBot;
-        playerVSComputer(chosenBot, sortBotAscending, sortBotDescending, digBot);
-    } else if (mode == 2){
-        computerVSComputer(sortBotAscending, sortBotDescending, digBot);
-    }
+    computerVSComputer(sortBotAscending, sortBotDescending, digBot);
 };
 
 bool Game::checkIfFinished() {
@@ -53,36 +42,6 @@ bool Game::checkIfFinished() {
         }
     }
     return true;
-}
-
-void Game::playerVSComputer(int chosenBot, SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot){
-    if(chosenBot == 1){
-        while(sortBotAscending.movePlayer(*this) != 'x' && !checkIfFinished()){
-            sortBotAscending.act(*this);
-            digBot.moveComputer(*this);
-            digBot.act(*this);
-            sortBotDescending.moveComputer(*this);
-            sortBotDescending.act(*this);
-        }
-    } else if(chosenBot == 2){
-        while(sortBotDescending.movePlayer(*this) != 'x' && !checkIfFinished()){
-            sortBotDescending.act(*this);
-            sortBotAscending.moveComputer(*this);
-            sortBotAscending.act(*this);
-            digBot.moveComputer(*this);
-            digBot.act(*this);
-        }
-    } else if(chosenBot == 3){
-        while(digBot.movePlayer(*this) != 'x' && !checkIfFinished()){
-            digBot.act(*this);
-            sortBotAscending.moveComputer(*this);
-            sortBotAscending.act(*this);
-            sortBotDescending.moveComputer(*this);
-            sortBotDescending.act(*this);
-        }
-    }
-
-    showWinner(sortBotAscending, sortBotDescending, digBot);
 }
 
 void Game::computerVSComputer(SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot){

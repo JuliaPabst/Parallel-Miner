@@ -13,7 +13,6 @@ public:
     void fillField();
     void setField(std::vector<std::vector<std::vector<int>>> newField);
     void playGame(SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot);
-    void playerVSComputer(int chosenBot, SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot);
     void computerVSComputer(SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot);
     bool checkIfFinished();
     void showWinner(SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot);
@@ -30,6 +29,9 @@ private:
     int numberOfBots_;
     std::vector<std::vector<std::vector<int>>> field_;
     int pointsTotal_;
+    DigBot digbot;
+    SortBotAscending sortBotAscending;
+    SortBotDescending sortBotDescending;
 };
 
 

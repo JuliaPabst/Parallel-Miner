@@ -1,4 +1,4 @@
-# Install script for directory: /Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project
+# Install script for directory: /Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

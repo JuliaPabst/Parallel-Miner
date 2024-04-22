@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project/cmake-build-debug"
+			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -479,7 +479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project"
+			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1127,7 +1127,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project/cmake-build-debug"
+			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner/cmake-build-debug"
 		},
 		{
 			"name" : "project_IS_TOP_LEVEL",
@@ -1151,7 +1151,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project"
+			"value" : "/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner"
 		}
 	],
 	"kind" : "cache",

@@ -1,3 +1,3 @@
-/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project/cmake-build-debug/CMakeFiles/project.dir
-/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Deep-Miner/project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner/cmake-build-debug/CMakeFiles/project.dir
+/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/julia/Desktop/Knowledge_Centre/FH_Technikum/Semester2/Objektorientiertes_Programmieren/Parallel-Miner/cmake-build-debug/CMakeFiles/rebuild_cache.dir
