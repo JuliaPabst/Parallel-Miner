@@ -14,9 +14,5 @@ int main() {
 
     game.playGame();
 
-
-    /*Test test;
-    test.runTests();
-     */
     return 0;
 }

@@ -73,8 +73,7 @@ void Game::playGame(){
     threads[4] = std::thread([this, &m] { playDigBot2(m); });
 
     for (std::thread& thread : threads) {
-        if (thread.joinable())
-            thread.join();
+        thread.join();
     }
 
     showWinner();
