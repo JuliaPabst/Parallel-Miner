@@ -2,7 +2,7 @@
 #define PROJECT_SORTBOT_H
 #include "Bot.h"
 
-class Bot;
+class Game;
 
 class SortBotAscending : public Bot {
 public:

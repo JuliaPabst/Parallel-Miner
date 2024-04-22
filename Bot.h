@@ -1,7 +1,10 @@
 #ifndef PROJECT_BOT_H
 #define PROJECT_BOT_H
 #include <iostream>
-#include "Game.h"
+#include <vector>
+#include <string>
+#include <thread>
+#include <mutex>
 
 using namespace std;
 
@@ -17,7 +20,7 @@ public:
     virtual ~Bot();
     virtual void act(Game& game) = 0;
     void place();
-    void moveComputer(Game& game);
+    void moveComputer(Game& game, std::mutex m);
     int findNewZ(Game& game);
     void addPoints(int points);
     void goOneZDown();

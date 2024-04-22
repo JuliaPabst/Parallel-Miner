@@ -1,8 +1,8 @@
 #include "Bot.h"
+#include "Game.h"
 #include <iostream>
 #include <cstdlib> // srand()
 #include <ctime>
-#include "Game.h"
 
 Bot::Bot() : botType_(none), points_(0) {
     place();
@@ -22,12 +22,12 @@ void Bot::place() {
     position_.resize(3);
 };
 
-void Bot::moveComputer(Game& game){
+void Bot::moveComputer(Game& game, std::mutex m){
     int x = rand() % 4;
     std::vector <int> position;
     position = position_;
 
-
+    m.lock();
     if(x == 0){
         if (position_[1] == 0){
             position[1] = 4;
@@ -78,6 +78,7 @@ void Bot::moveComputer(Game& game){
             }
         }
     }
+    m.unlock();
 }
 
 int Bot::findNewZ(Game& game){

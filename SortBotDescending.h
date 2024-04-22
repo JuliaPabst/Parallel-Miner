@@ -2,6 +2,8 @@
 #define PROJECT_SORTBOTDESCENDING_H
 #include "Bot.h"
 
+class Bot;
+
 class SortBotDescending : public Bot {
 public:
     SortBotDescending();

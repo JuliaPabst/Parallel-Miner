@@ -2,6 +2,7 @@
 #define PROJECT_DIGBOT_H
 #include "Bot.h"
 
+class Bot;
 
 class DigBot : public Bot {
 public:

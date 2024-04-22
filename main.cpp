@@ -11,11 +11,8 @@
 int main() {
     srand(time(NULL));
     Game game;
-    SortBotAscending sortBotAscending;
-    SortBotDescending sortBotDescending;
-    DigBot digBot;
 
-    game.playGame(sortBotAscending, sortBotDescending, digBot);
+    game.playGame();
 
 
     /*Test test;

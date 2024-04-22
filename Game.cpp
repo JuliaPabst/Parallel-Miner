@@ -14,12 +14,6 @@ Game::Game() : x_(5), y_(5), z_(10), numberOfBots_(3), pointsTotal_(0), field_(x
     bots.push_back(&sortBotDescending);
 
     threads.reserve(5);
-    /*threads.emplace_back();
-    threads.emplace_back();
-    threads.emplace_back();
-    threads.emplace_back();
-    threads.emplace_back();
-     */
 }
 
 void Game::fillField() {
@@ -34,10 +28,57 @@ void Game::fillField() {
     }
 }
 
-void Game::playGame(SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot){
+std::thread Game::playSortBotAscending1(std::mutex m){
+    while(!checkIfFinished()){
+        sortBotAscending1.moveComputer(*this, m);
+        sortBotAscending1.act(*this);
+    }
+}
+
+std::thread Game::playSortBotAscending2(std::mutex m){
+    while(!checkIfFinished()){
+        sortBotAscending2.moveComputer(*this, m);
+        sortBotAscending2.act(*this);
+    }
+}
+
+std::thread Game::playSortBotDescending(std::mutex m){
+    while(!checkIfFinished()){
+        sortBotDescending.moveComputer(*this, m);
+        sortBotDescending.act(*this);
+    }
+}
+
+std::thread Game::playDigBot1(std::mutex m){
+    while(!checkIfFinished()){
+        digBot1.moveComputer(*this, m);
+        digBot1.act(*this);
+    }
+}
+
+std::thread Game::playDigBot2(std::mutex m){
+    while(!checkIfFinished()){
+        digBot2.moveComputer(*this, m);
+        digBot2.act(*this);
+    }
+}
+
+void Game::playGame(){
+    std::mutex m;
+
     std::cout << "Welcome to Deep Miner!" << std::endl;
 
-    computerVSComputer(sortBotAscending, sortBotDescending, digBot);
+    threads.emplace_back(playSortBotAscending1(m));
+    threads.emplace_back(playSortBotAscending2(m));
+    threads.emplace_back(playSortBotDescending(m));
+    threads.emplace_back(playDigBot1(m));
+    threads.emplace_back(playDigBot2(m));
+
+    for (std::thread& thread : threads) {
+        thread.join();
+    }
+
+    showWinner();
 };
 
 bool Game::checkIfFinished() {
@@ -51,35 +92,31 @@ bool Game::checkIfFinished() {
     return true;
 }
 
-void Game::computerVSComputer(SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot){
-    while(!checkIfFinished()){
-        sortBotAscending.moveComputer(*this);
-        sortBotAscending.act(*this);
-        digBot.moveComputer(*this);
-        digBot.act(*this);
-        sortBotDescending.moveComputer(*this);
-        sortBotDescending.act(*this);
-    }
 
-    showWinner(sortBotAscending, sortBotDescending, digBot);
-}
 
-void Game::showWinner(SortBotAscending& sortBotAscending, SortBotDescending& sortBotDescending, DigBot& digBot){
-    Bot* bots[] = {&sortBotAscending, &sortBotDescending, &digBot};
-    Bot* winner = &sortBotAscending;
 
-    for (int i = 0; i < numberOfBots_; i++){
-        if(bots[i]->getPoints() > winner->getPoints()){
-            winner = bots[i];
+void Game::showWinner(){
+    Bot* winner = bots[0];
+    int winnerInt = 0;
+    int counter = 0;
+
+
+    for (Bot* singleBot : bots){
+        counter++;
+        if(singleBot->getPoints() > winner->getPoints()){
+            winner = singleBot;
+            winnerInt = counter;
         }
     }
 
     std::cout << "Who has how many points?" << std::endl;
     std::cout << "How many points where there in total? " << pointsTotal_ << std::endl;
-    std::cout << "The Sort Bot Ascending has " << sortBotAscending.getPoints() << " points!" << std::endl;
+    std::cout << "The Sort Bot Ascending 1 has " << sortBotAscending1.getPoints() << " points!" << std::endl;
+    std::cout << "The Sort Bot Ascending 2 has " << sortBotAscending2.getPoints() << " points!" << std::endl;
+    std::cout << "The Dig Deep Bot 1 has " << digBot1.getPoints() << " points!" << std::endl;
+    std::cout << "The Dig Deep Bot 2 has " << digBot2.getPoints() << " points!" << std::endl;
     std::cout << "The Sort Descending has " << sortBotDescending.getPoints() << " points!" << std::endl;
-    std::cout << "The Dig Deep Bot has " << digBot.getPoints() << " points!" << std::endl;
-    std::cout << "So the winner is: " << winner->getBotTypesStrings()[winner->getBotType()] << std::endl;
+    std::cout << "So the winner is: " << botNames[winnerInt - 1] << std::endl;
 }
 
 vector<vector<vector<int>>> Game::getField(){

@@ -1,6 +1,8 @@
 #include "SortBot.h"
 #include <iostream>
+#include "Bot.h"
 #include "Game.h"
+
 
 SortBotAscending::SortBotAscending(){
     setBotType(sortingAscending);
