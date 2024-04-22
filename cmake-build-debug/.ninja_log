@@ -1,0 +1,19 @@
+# ninja log v5
+13	1649	1711720867045331279	CMakeFiles/project.dir/SortBotDescending.cpp.o	b46453e5b5899b03
+12	1143	1711722138074209197	CMakeFiles/project.dir/Test.cpp.o	36d919aae29dcf1d
+10	931	1711721980371372629	CMakeFiles/project.dir/main.cpp.o	bab214d26c795960
+1144	1231	1711722138168597840	project	7eb82dbd88664fee
+10	1334	1711720948580188511	CMakeFiles/project.dir/Game.cpp.o	82383902893ade66
+12	1619	1711720867016938390	CMakeFiles/project.dir/SortBot.cpp.o	38e16c1bdc9d677e
+12	1623	1711720867018304068	CMakeFiles/project.dir/DigBot.cpp.o	b1ce5850e2e72156
+12	1652	1711720867048247793	CMakeFiles/project.dir/Bot.cpp.o	f911aed3e7ad798a
+34	2211	1712654438179764554	CMakeFiles/project.dir/main.cpp.o	bab214d26c795960
+2215	24519	1712654460503543287	project	7eb82dbd88664fee
+16	12883	1712750351287570836	CMakeFiles/project.dir/main.cpp.o	bab214d26c795960
+18	13133	1712750351546980408	CMakeFiles/project.dir/DigBot.cpp.o	b1ce5850e2e72156
+16	13169	1712750351580195732	CMakeFiles/project.dir/Bot.cpp.o	f911aed3e7ad798a
+17	13188	1712750351609106095	CMakeFiles/project.dir/SortBot.cpp.o	38e16c1bdc9d677e
+19	13232	1712750351640293713	CMakeFiles/project.dir/SortBotDescending.cpp.o	b46453e5b5899b03
+20	13280	1712750351694980623	CMakeFiles/project.dir/Test.cpp.o	36d919aae29dcf1d
+19	13599	1712750352038771880	CMakeFiles/project.dir/Game.cpp.o	82383902893ade66
+13600	17789	1712750356227639827	project	7eb82dbd88664fee
