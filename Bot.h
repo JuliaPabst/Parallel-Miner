@@ -1,6 +1,7 @@
 #ifndef PROJECT_BOT_H
 #define PROJECT_BOT_H
 #include <iostream>
+#include "Game.h"
 
 using namespace std;
 
@@ -26,8 +27,7 @@ public:
     string* getBotTypesStrings();
     void setBotType(BotType botType);
     void setPosition(vector <int> position);
-    bool checkIfFieldIsTaken(Bot botToCheck);
-
+    bool checkIfFieldIsTaken(std::vector <int> position, Game game);
 
 private:
     BotType botType_;

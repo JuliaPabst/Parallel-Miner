@@ -24,31 +24,58 @@ void Bot::place() {
 
 void Bot::moveComputer(Game& game){
     int x = rand() % 4;
+    std::vector <int> position;
+    position = position_;
 
 
     if(x == 0){
         if (position_[1] == 0){
-            position_[1] = 4;
+            position[1] = 4;
+            if (!checkIfFieldIsTaken(position, game)){
+                position_[1] = 4;
+            }
         } else {
-            position_[1]--;
+            position[1]--;
+            if (!checkIfFieldIsTaken(position, game)){
+                position_[1]--;
+            }
         }
     } else if (x == 1){
         if (position_[0] == 0){
-            position_[0] = 4;
+            position[0] = 4;
+            if (!checkIfFieldIsTaken(position, game)){
+                position_[0] = 4;
+            }
+
         } else {
-            position_[0]--;
+            position[0]--;
+            if (!checkIfFieldIsTaken(position, game)){
+                position_[0]--;
+            }
         }
     } else if (x == 2){
         if (position_[1] == 4){
-            position_[1] = 0;
+            position[1] = 0;
+            if (!checkIfFieldIsTaken(position, game)){
+                position_[1] = 0;
+            }
         } else {
-            position_[1]++;
+            position[1]++;
+            if (!checkIfFieldIsTaken(position, game)){
+                position_[1]++;
+            }
         }
     } else if (x == 3){
         if (position_[0] == 4){
-            position_[0] = 0;
+            position[0] = 0;
+            if (!checkIfFieldIsTaken(position, game)){
+                position_[0] = 0;
+            }
         } else {
-            position_[0]++;
+            position[0]++;
+            if (!checkIfFieldIsTaken(position, game)){
+                position_[0]++;
+            }
         }
     }
 }
@@ -96,3 +123,16 @@ void Bot::setPosition(vector <int> position){
     position_ = position;
 };
 
+bool Bot::checkIfFieldIsTaken(std::vector <int> position, Game game){
+    for (Bot* bot : game.getBots()){
+        if(position[0] == bot->getPosition()[0]){
+            if(position[1] == bot->getPosition()[1]){
+                if(position[2] == bot->getPosition()[2]){
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
+}

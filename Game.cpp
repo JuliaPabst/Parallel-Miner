@@ -14,11 +14,12 @@ Game::Game() : x_(5), y_(5), z_(10), numberOfBots_(3), pointsTotal_(0), field_(x
     bots.push_back(&sortBotDescending);
 
     threads.reserve(5);
+    /*threads.emplace_back();
     threads.emplace_back();
-    threads.emplace_back(func2);
-    threads.emplace_back(func3);
-    threads.emplace_back(func4);
-    threads.emplace_back(func5);
+    threads.emplace_back();
+    threads.emplace_back();
+    threads.emplace_back();
+     */
 }
 
 void Game::fillField() {
