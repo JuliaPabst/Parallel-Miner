@@ -22,58 +22,9 @@ void Bot::place() {
     position_.resize(3);
 };
 
-char Bot::movePlayer(Game& game) {
-    char currentMove = ' ';
-
-    std::cout << "Which move do you want to make? (up: w, left: a, down: s, right: d, stay: y, end Game: x" << std::endl;
-    std::cin >> currentMove;
-
-    //std::cout << "Current move: " << currentMove << std::endl;
-
-    while (currentMove != 'w' && currentMove != 'a' && currentMove != 's' && currentMove != 'd' && currentMove != 'y' && currentMove != 'x'){
-        std::cout << "This option is not available. Try again!" << std::endl;
-        std::cout << "Which move do you want to make? (up: w, left: a, down: s, right: d, stay: y, end Game: x" << std::endl;
-        std::cin >> currentMove;
-    }
-
-    // getX statt magic numbers
-    if(currentMove == 'w'){
-        if (position_[1] == 0){
-            position_[1] = 4;
-        } else {
-            position_[1]--;
-        }
-    } else if (currentMove == 'a'){
-        if (position_[0] == 0){
-            position_[0] = 4;
-        } else {
-            position_[0]--;
-        }
-    } else if (currentMove == 's'){
-        if (position_[1] == 4){
-            position_[1] = 0;
-        } else {
-            position_[1]++;
-        }
-    } else if (currentMove == 'd'){
-        if (position_[0] == 4){
-            position_[0] = 0;
-        } else {
-            position_[0]++;
-        }
-    }
-
-    int newZ = findNewZ(game);
-
-    if (newZ >= 0){
-        position_[2] = findNewZ(game);
-    }
-
-    return currentMove;
-};
-
 void Bot::moveComputer(Game& game){
     int x = rand() % 4;
+
 
     if(x == 0){
         if (position_[1] == 0){

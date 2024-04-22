@@ -16,7 +16,6 @@ public:
     virtual ~Bot();
     virtual void act(Game& game) = 0;
     void place();
-    char movePlayer(Game& game);
     void moveComputer(Game& game);
     int findNewZ(Game& game);
     void addPoints(int points);
@@ -27,6 +26,7 @@ public:
     string* getBotTypesStrings();
     void setBotType(BotType botType);
     void setPosition(vector <int> position);
+    bool checkIfFieldIsTaken(Bot botToCheck);
 
 
 private:

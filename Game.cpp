@@ -5,14 +5,20 @@
 
 Game::Game() : x_(5), y_(5), z_(10), numberOfBots_(3), pointsTotal_(0), field_(x_, vector<vector<int>>(y_, vector<int>(z_, 0))){
     fillField();
-}
 
-void Game::clearConsole() {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    bots.reserve(5);
+    bots.push_back(&digBot1);
+    bots.push_back(&digBot2);
+    bots.push_back(&sortBotAscending1);
+    bots.push_back(&sortBotAscending2);
+    bots.push_back(&sortBotDescending);
+
+    threads.reserve(5);
+    threads.emplace_back();
+    threads.emplace_back(func2);
+    threads.emplace_back(func3);
+    threads.emplace_back(func4);
+    threads.emplace_back(func5);
 }
 
 void Game::fillField() {
@@ -94,3 +100,8 @@ int Game::getZ(){
 void Game::setField(vector<vector<vector<int>>> newField){
     field_ = newField;
 }
+
+std::vector<Bot*> Game::getBots() const{
+    return bots;
+}
+
