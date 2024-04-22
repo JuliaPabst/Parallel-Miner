@@ -18,9 +18,9 @@ class Bot {
 public:
     Bot();
     virtual ~Bot();
-    virtual void act(Game& game) = 0;
+    virtual void act(Game& game, std::mutex& m) = 0;
     void place();
-    void moveComputer(Game& game, std::mutex m);
+    void moveComputer(Game& game, std::mutex& m);
     int findNewZ(Game& game);
     void addPoints(int points);
     void goOneZDown();
@@ -30,7 +30,7 @@ public:
     string* getBotTypesStrings();
     void setBotType(BotType botType);
     void setPosition(vector <int> position);
-    bool checkIfFieldIsTaken(std::vector <int> position, Game game);
+    bool checkIfFieldIsTaken(std::vector <int> position, Game& game);
 
 private:
     BotType botType_;

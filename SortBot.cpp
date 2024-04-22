@@ -10,9 +10,10 @@ SortBotAscending::SortBotAscending(){
 
 SortBotAscending::~SortBotAscending() = default;
 
-void SortBotAscending::act(Game& game) {
+void SortBotAscending::act(Game& game, std::mutex& m) {
     vector<vector<vector<int>>> newField = game.getField();
 
+    m.lock();
     for (int i = 0; i < game.getX(); i++) {
         for (int j = 0; j < game.getY(); j++) {
             if(i == getPosition()[0] && j == getPosition()[1]){
@@ -26,22 +27,7 @@ void SortBotAscending::act(Game& game) {
             }
         }
     }
+    m.unlock();
 
     std::cout << "\n" << std::endl;
-
-    // test if it sorts correctly
-    /*
-    for (int i = 0; i < game.getX(); i++) {
-        for (int j = 0; j < game.getX(); j++) {
-            if(i == getPosition()[0] && j == getPosition()[1]){
-                for (int k = 0; k < game.getZ(); k++) {
-                        std::cout << newField[i][j][k];
-                }
-            }
-        }
-    }
-    */
-
-
-    game.setField(newField);
 };

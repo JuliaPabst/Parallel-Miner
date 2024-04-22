@@ -21,11 +21,11 @@ public:
     int getY();
     int getZ();
     std::vector<Bot*> getBots() const;
-    std::thread playSortBotAscending1(std::mutex m);
-    std::thread playSortBotAscending2(std::mutex m);
-    std::thread playSortBotDescending(std::mutex m);
-    std::thread playDigBot1(std::mutex m);
-    std::thread playDigBot2(std::mutex m);
+    void playSortBotAscending1(std::mutex& m);
+    void playSortBotAscending2(std::mutex& m);
+    void playSortBotDescending(std::mutex& m);
+    void playDigBot1(std::mutex& m);
+    void playDigBot2(std::mutex& m);
 
 private:
     int x_;
@@ -41,7 +41,7 @@ private:
     SortBotAscending sortBotAscending2;
     SortBotDescending sortBotDescending;
     std::vector<std::string> botNames = {"Dig Deep Bot 1", "Dig Deep Bot 2", "Sort Bot Ascending 1", "Sort Bot Ascending 2", "Sort Bot Descending"};
-    std::vector<std::thread> threads;
+    std::thread threads[5];
 };
 
 

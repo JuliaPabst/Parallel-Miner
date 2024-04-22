@@ -8,7 +8,7 @@ class DigBot : public Bot {
 public:
     DigBot();
     virtual ~DigBot();
-    void act(Game& game) override;
+    void act(Game& game, std::mutex& m) override;
 };
 
 

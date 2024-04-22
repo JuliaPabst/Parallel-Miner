@@ -7,9 +7,10 @@ SortBotDescending::SortBotDescending(){
 
 SortBotDescending::~SortBotDescending() = default;
 
-void SortBotDescending::act(Game& game) {
+void SortBotDescending::act(Game& game, std::mutex& m) {
     vector<vector<vector<int>>> newField = game.getField();
 
+    m.lock();
     for (int i = 0; i < game.getX(); i++) {
         for (int j = 0; j < game.getY(); j++) {
             if(i == getPosition()[0] && j == getPosition()[1]){
@@ -23,20 +24,5 @@ void SortBotDescending::act(Game& game) {
             }
         }
     }
-    std::cout << "\n" << std::endl;
-
-    // test if it sorts correctly
-    /*
-    for (int i = 0; i < game.getX(); i++) {
-        for (int j = 0; j < game.getX(); j++) {
-            if(i == getPosition()[0] && j == getPosition()[1]){
-                for (int k = 0; k < game.getZ(); k++) {
-                        std::cout << newField[i][j][k];
-                }
-            }
-        }
-    }
-    */
-
-    game.setField(newField);
+    m.unlock();
 };

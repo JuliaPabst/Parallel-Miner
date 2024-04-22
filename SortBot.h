@@ -8,7 +8,7 @@ class SortBotAscending : public Bot {
 public:
     SortBotAscending();
     virtual ~SortBotAscending() override;
-    void act(Game& game) override;
+    void act(Game& game, std::mutex& m) override;
 };
 
 

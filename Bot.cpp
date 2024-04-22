@@ -22,7 +22,7 @@ void Bot::place() {
     position_.resize(3);
 };
 
-void Bot::moveComputer(Game& game, std::mutex m){
+void Bot::moveComputer(Game& game, std::mutex& m){
     int x = rand() % 4;
     std::vector <int> position;
     position = position_;
@@ -124,7 +124,7 @@ void Bot::setPosition(vector <int> position){
     position_ = position;
 };
 
-bool Bot::checkIfFieldIsTaken(std::vector <int> position, Game game){
+bool Bot::checkIfFieldIsTaken(std::vector <int> position, Game& game){
     for (Bot* bot : game.getBots()){
         if(position[0] == bot->getPosition()[0]){
             if(position[1] == bot->getPosition()[1]){

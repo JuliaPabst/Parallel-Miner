@@ -12,8 +12,6 @@ Game::Game() : x_(5), y_(5), z_(10), numberOfBots_(3), pointsTotal_(0), field_(x
     bots.push_back(&sortBotAscending1);
     bots.push_back(&sortBotAscending2);
     bots.push_back(&sortBotDescending);
-
-    threads.reserve(5);
 }
 
 void Game::fillField() {
@@ -28,38 +26,38 @@ void Game::fillField() {
     }
 }
 
-std::thread Game::playSortBotAscending1(std::mutex m){
-    while(!checkIfFinished()){
+void Game::playSortBotAscending1(std::mutex& m){
+    while(!checkIfFinished()) {
         sortBotAscending1.moveComputer(*this, m);
-        sortBotAscending1.act(*this);
+        sortBotAscending1.act(*this, m);
     }
 }
 
-std::thread Game::playSortBotAscending2(std::mutex m){
-    while(!checkIfFinished()){
+void Game::playSortBotAscending2(std::mutex& m){
+    while(!checkIfFinished()) {
         sortBotAscending2.moveComputer(*this, m);
-        sortBotAscending2.act(*this);
+        sortBotAscending2.act(*this, m);
     }
 }
 
-std::thread Game::playSortBotDescending(std::mutex m){
-    while(!checkIfFinished()){
+void Game::playSortBotDescending(std::mutex& m){
+    while(!checkIfFinished()) {
         sortBotDescending.moveComputer(*this, m);
-        sortBotDescending.act(*this);
+        sortBotDescending.act(*this, m);
     }
 }
 
-std::thread Game::playDigBot1(std::mutex m){
-    while(!checkIfFinished()){
+void Game::playDigBot1(std::mutex& m){
+    while(!checkIfFinished()) {
         digBot1.moveComputer(*this, m);
-        digBot1.act(*this);
+        digBot1.act(*this, m);
     }
 }
 
-std::thread Game::playDigBot2(std::mutex m){
-    while(!checkIfFinished()){
+void Game::playDigBot2(std::mutex& m){
+    while(!checkIfFinished()) {
         digBot2.moveComputer(*this, m);
-        digBot2.act(*this);
+        digBot2.act(*this, m);
     }
 }
 
@@ -68,14 +66,15 @@ void Game::playGame(){
 
     std::cout << "Welcome to Deep Miner!" << std::endl;
 
-    threads.emplace_back(playSortBotAscending1(m));
-    threads.emplace_back(playSortBotAscending2(m));
-    threads.emplace_back(playSortBotDescending(m));
-    threads.emplace_back(playDigBot1(m));
-    threads.emplace_back(playDigBot2(m));
+    threads[0] = std::thread([this, &m] { playSortBotAscending1(m); });
+    threads[1] = std::thread([this, &m] { playSortBotAscending2(m); });
+    threads[2] = std::thread([this, &m] { playSortBotDescending(m); });
+    threads[3] = std::thread([this, &m] { playDigBot1(m); });
+    threads[4] = std::thread([this, &m] { playDigBot2(m); });
 
     for (std::thread& thread : threads) {
-        thread.join();
+        if (thread.joinable())
+            thread.join();
     }
 
     showWinner();
@@ -91,9 +90,6 @@ bool Game::checkIfFinished() {
     }
     return true;
 }
-
-
-
 
 void Game::showWinner(){
     Bot* winner = bots[0];
